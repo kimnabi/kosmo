@@ -19,7 +19,7 @@ public class ForTest_3 {
 		int res = 0;
 		for (int ii =0;ii< s.length; ii++ )
 		{
-			sum += s.charAt(ii) - '0'; //아스키코드 48
+			res += s.charAt(ii) - '0'; //아스키코드 48
 		}//end of for
 
 		char c[] = s.toCharArray(); // char 배열로 변환
