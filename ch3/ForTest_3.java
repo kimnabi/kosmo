@@ -30,10 +30,12 @@ public class ForTest_3 {
 			//Integer.parseInt 이용한 형변환
 			/*String tem = Character.toString(c[i]);//char --> String 형변환
 			//System.out.println(tem);
-			//int ii = Integer.parseInt(tem); //String --> int 형변환
-			//sum+= ii;*/
+			//int ii = Integer.parseInt(tem); //String --> int 형변환*/
+			sum+= Integer.parseInt(c[i].toString()); // String --> int 형변환
+			
+
 			//Character.getNumericValue(c[i]); //char --> int 형변환하는 함수
-			sum += Character.getNumericValue(c[i]);//sum = sum + Character.getNumericValue(c[i]); //char --> int 형변환하는 함수
+			//sum += Character.getNumericValue(c[i]);//sum = sum + Character.getNumericValue(c[i]); //char --> int 형변환하는 함수
 		} // end of for
 		System.out.println("sum >>> : "+ sum);
 	} //end of main
