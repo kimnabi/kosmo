@@ -9,15 +9,15 @@ public class Test_EvenOdd {
 	
 	public static void main(String[] args) {
 		
-		int evenCnt = 0; // 짝수 갯수 담을 int 형 타입 변수 선언
-		int oddCnt = 0;  // 홀수 갯수 담을 int 형 타입 변수 선언
+		int evenCnt = 0; // 짝수 갯수 담을 int 타입 변수 선언
+		int oddCnt = 0;  // 홀수 갯수 담을 int 타입 변수 선언
 		// int 형 타입 참조변수 num 은 int 형 자료형 배열의 주소를 가르키는 한개의 주소 값를 담는다
-		int[] num = /*new int[]*/ {3, 4, 5, 6, 7, 10, 15, 16}; // int 형 배열 인스턴스하고
-		//객체 배열  안의 각각 공간에 만들어지고 각 index 별로 하나씩 리터럴 정수값 대입하여 선언한다 
+		int[] num = /*new int[]*/ {3, 4, 5, 6, 7, 10, 15, 16}; // int 형 배열 인스턴스하고 
+		//객체 배열  안의 각각 공간에 만들어지고 각 index 별로 하나씩 리터럴 정수값 대입하여 초기화 한다
 		
 		// 콘솔에 짝수 even, 홀수 odd 의 갯수를 출력 하시오 
 		for (int i=0; i < num.length; i++) {
-			//배열의 길이 만큼 각각의공간의 index에 하나씩 i 지역변수 에 더하여 순회하여
+			//배열의 길이 만큼 각각의공간에 index을 i 지역변수 을  순차적으로 누적된 i 값을 할당하여
             //각각의 값를 호출하여 콘솔에 출력 한다
 			System.out.println("num["+i+"] >>> : " + num[i]);
 			// 나머지연산 : 짝수일때 num[i]%2 == 0 
