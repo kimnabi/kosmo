@@ -53,7 +53,7 @@ public class ArrayListTset2 {
 		System.out.println("cV >>> : " + cV);
 		
 		// 3 콘솔에 프린트 하기
-//		int i = aList.get(2); int 는 기초 자료형 데이타이므로 클래스 자료형이 아니다 그래서 int의 Wapper 클래스인 Integer로 Boxing해서 변환한다
+		// int i = aList.get(2); //int 는 기초 자료형 데이타이므로 클래스 자료형이 아니다 그래서 int의 Wapper 클래스인 Integer로 Boxing해서 변환한다
 		Object aList2_Object = aList.get(2); // 리턴 Object 클래스가  클래스의 부모클래스이자 상속관계로써  Integer 자식클래스로 다운캐스팅 해야한다
 		Integer aList2_Integer = (Integer)aList2_Object; // 강제 형변환을 해줘야한다  :: Sting 자료형 s에 대입하기위해 데이타형이 같아야 한다
 		//int i = (int)aList2_Integer;
@@ -62,7 +62,7 @@ public class ArrayListTset2 {
 		
 		String iV = String.valueOf(aList2_Object);
 		System.out.println("iV >>> : " + iV);
-		valueOf
+	//	valueOf
 		// "4번째 데이터" 콘솔에 프린트 하기
 //		String s1 = aList.get(3);
 		Object aList3_Object = aList.get(3);
