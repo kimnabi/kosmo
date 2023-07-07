@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="a.b.c.com.common.chabun.dao.KosChabunDAO">
+
+<select id="getKosMemberChabun" resultType="kosmembervo">
+	SELECT  /*+ INDEX_DESC(A SYS_C0010954) */ NVL(MAX(SUBSTR(A.MNUM, -4)), 0) + 1  MNUM FROM SPRING_MEMBER A
+</select>
+<select id="getKosBoardChabun" resultType="kosboardvo">
+	SELECT  /*+ INDEX_DESC(A SYS_C0010971) */ NVL(MAX(SUBSTR(A.BNUM, -4)), 0) + 1  BNUM FROM SPRING_BOARD A
+</select>
+<select id="getKosRboardChabun" resultType="kosrboardvo">
+	SELECT  /*+ INDEX_DESC(A SYS_C0010984) */ NVL(MAX(SUBSTR(A.RBNUM, -4)), 0) + 1  RBNUM FROM SPRING_RBOARD A
+</select>
+<select id="getProductChabun" resultType="kosmoproductvo">
+	SELECT  /*+ INDEX_DESC(A SYS_C0011009) */ NVL(MAX(SUBSTR(A.kpnum, -4)), 0) + 1  kpnum FROM KOSMO_PRODUCT A
+</select>
+<select id="getCartChabun" resultType="kosmocartvo">
+	SELECT /*+ INDEX_DESC(A SYS_C0010997) */ NVL(MAX(SUBSTR(A.KCNUM, -4)), 0) + 1  KCNUM FROM KOSMO_CART A
+</select>
+
+
+
+</mapper>         	  

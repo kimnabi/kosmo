@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+		  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias type="a.b.c.com.kos.mem.vo.KosMemberVO" alias="kosmembervo"/>		
+		<typeAlias type="a.b.c.com.kos.board.vo.KosBoardVO" alias="kosboardvo"/>		
+		<typeAlias type="a.b.c.com.kos.board.vo.KosBoardLikeVO" alias="kosboardlikevo"/>		
+		<typeAlias type="a.b.c.com.kos.rboard.vo.KosRboardVO" alias="kosrboardvo"/>
+		<typeAlias type="a.b.c.com.kos.cart.vo.KosmoCartVO" alias="kosmocartvo"/>
+		
+		<!-- 상품 -->		
+		<typeAlias type="a.b.c.com.kos.product.vo.KosmoProductVO" alias="kosmoproductvo"/>		
+		<typeAlias type="a.b.c.com.kos.cart.vo.KosmoCartVO" alias="kosmocartvo"/>
+	</typeAliases>
+</configuration>

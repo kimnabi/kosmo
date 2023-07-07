@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+          
+<mapper namespace="a.b.c.com.kos.cart.dao.KosmoCartDAO">
+
+<insert id="kosmoCartInsert" parameterType="kosmocartvo" >
+	
+	INSERT INTO KOSMO_CART (	KCNUM, KPID, KPNAME, 
+								KPFILE, KPCNT, KPPRICE, 
+								KPPRICESUM, KPNUM, KMNUM, 
+								DELETEYN, INSERTDATE, UPDATEDATE)
+            			VALUES( #{kcnum}, 
+            					#{kpid}, 
+            					#{kpname},
+								#{kpfile},            					             					
+            					#{kpcnt}, 
+            					#{kpprice},
+            					#{kppricesum}, 
+            					#{kpnum}, 
+            					#{kmnum},
+            					'Y', 
+            					SYSDATE, 
+            					SYSDATE)
+</insert>
+
+<select id="kosmoCartSelectAll" parameterType="kosmocartvo" resultType="kosmocartvo">	
+	
+		SELECT 	A.KCNUM 		KCNUM
+		       ,A.KPID 			KPID
+		       ,A.KPNAME 		KPNAME
+		       ,A.KPCNT 		KPCNT
+		       ,A.KPFILE 		KPFILE
+		       ,A.KPPRICE 		KPPRICE
+		       ,A.KPPRICESUM 	KPPRICESUM
+		       ,A.KPNUM 		KPNUM
+		       ,A.KMNUM 		KMNUM
+		       ,A.DELETEYN 	DELETEYN
+		       ,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD') INSERTDATE
+		       ,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD') UPDATEDATE	  
+		FROM 	KOSMO_CART A
+		WHERE 	A.DELETEYN = 'Y'
+		AND 	A.KMNUM = #{kmnum} 	
+		ORDER BY 1 DESC  
+	
+</select>
+
+<update id="kosmoCartDelete" parameterType="kosmocartvo" >
+ 
+		UPDATE 	KOSMO_CART 
+		SET 	DELETEYN = 'N', 
+				UPDATEDATE = SYSDATE 			
+		WHERE KCNUM = #{kcnum} 
+	
+</update>
+
+<update id="kosmoCartDeleteArray" parameterType="kosmocartvo" >
+	<foreach collection="list" item="item" index="index" separator=";" open="DECLARE BEGIN" close="; END;"> 
+		UPDATE 	KOSMO_CART 
+		SET 	DELETEYN = 'N', 
+				UPDATEDATE = SYSDATE 			
+		WHERE KCNUM = #{item.kcnum} 
+	</foreach>
+</update>
+
+</mapper>     
+
+
+
+
+
+
+
+
+ 

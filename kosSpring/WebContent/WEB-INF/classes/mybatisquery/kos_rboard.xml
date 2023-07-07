@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+          
+<mapper namespace="a.b.c.com.kos.rboard.dao.KosRboardDAO">
+
+<insert id="kosRboardInsert" parameterType="kosrboardvo" >
+ 
+	INSERT INTO SPRING_RBOARD( 	
+								RBNUM, 
+								BNUM, 
+								RBNAME,
+	                           	RBCONTENT,  
+	                           	DELETEYN,
+	                           	INSERTDATE
+	                        ) 
+	                  VALUES
+	                  		( 	
+	                  			#{rbnum}, 
+	                  			#{bnum}, 
+	                  			#{rbname},
+	                          	#{rbcontent},  
+	                          	'Y',
+	                          	SYSDATE
+	                        )
+</insert>
+
+
+<select id="kosRboardSelectAll" parameterType="kosrboardvo" resultType="kosrboardvo">
+	
+		SELECT 	A.RBNUM 		RBNUM
+		       ,A.BNUM  		BNUM
+		       ,A.RBNAME 		RBNAME
+		       ,A.RBCONTENT 	RBCONTENT	   
+	           ,A.INSERTDATE 	INSERTDATE
+		FROM 	SPRING_RBOARD A
+		WHERE 	DELETEYN = 'Y' 
+		AND 	A.BNUM = #{bnum}
+		ORDER BY 1 DESC
+</select>
+
+<update id="kosRboardDelete" parameterType="kosrboardvo">
+	
+	UPDATE 	SPRING_RBOARD 
+	SET 	DELETEYN = 'N', 
+			INSERTDATE = SYSDATE
+	WHERE 	DELETEYN = 'Y' 
+	AND 	RBNUM = #{rbnum}
+	
+</update>
+
+</mapper>      

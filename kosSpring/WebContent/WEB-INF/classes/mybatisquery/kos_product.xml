@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+          
+<mapper namespace="a.b.c.com.kos.product.dao.KosmoProductDAO">
+
+<insert id="kosmoProductInsert" parameterType="kosmoproductvo" >
+	
+	INSERT INTO KOSMO_PRODUCT (	KPNUM, KPID, KPNAME, 
+								KPCOMPANY, KPFILE, KPCNT, 
+								KPPRICE, KPDESC, DELETEYN, 
+								INSERTDATE, UPDATEDATE)
+            			VALUES( #{kpnum}, 
+            					#{kpid}, 
+            					#{kpname}, 
+            					#{kpcompany}, 
+            					#{kpfile}, 
+            					#{kpcnt}, 
+            					#{kpprice}, 
+            					#{kpdesc}, 
+            					'Y', 
+            					SYSDATE, 
+            					SYSDATE)
+</insert>
+<select id="getTotalCount"  resultType="int">	
+	
+		SELECT 	COUNT(A.kpnum)
+		FROM 	KOSMO_PRODUCT A
+		WHERE 	A.DELETEYN = 'Y' 
+
+</select>
+<select id="kosmoProductSelectAll" parameterType="kosmoproductvo" resultType="kosmoproductvo">	
+	<![CDATA[
+	
+		SELECT 	A.KPNUM 	KPNUM
+		       ,A.KPID 		KPID
+		       ,A.KPNAME 	KPNAME
+		       ,A.KPCOMPANY KPCOMPANY
+		       ,A.KPFILE 	KPFILE
+		       ,A.KPCNT 	KPCNT
+		       ,A.KPPRICE 	KPPRICE
+		       ,A.KPDESC 	KPDESC
+		       ,A.DELETEYN 	DELETEYN
+		       ,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD') INSERTDATE
+		       ,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD') UPDATEDATE	 
+		 
+		FROM
+    (
+        SELECT /*+ INDEX(T1 SYS_C0011009) */ 
+            ROWNUM AS RNUM, T1.*
+        FROM
+            KOSMO_PRODUCT T1
+        WHERE
+             T1.DELETEYN = 'Y' AND ROWNUM <= ${pageSize}
+    ) A
+		WHERE 	A.DELETEYN = 'Y' 	 AND  ${curPage} <= RNUM
+		ORDER BY 1 DESC  
+	  ]]>
+</select>
+
+<select id="kosmoProductSelect" parameterType="kosmoproductvo" resultType="kosmoproductvo">	
+	
+		SELECT 	A.KPNUM 	KPNUM
+		       ,A.KPID KPID
+		       ,A.KPNAME 	KPNAME
+		       ,A.KPCOMPANY KPCOMPANY
+		       ,A.KPFILE 	KPFILE
+		       ,A.KPCNT 	KPCNT
+		       ,A.KPPRICE 	KPPRICE
+		       ,A.KPDESC 	KPDESC
+		       ,A.DELETEYN 	DELETEYN
+		       ,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD') INSERTDATE
+		       ,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD') UPDATEDATE	  
+		FROM 	KOSMO_PRODUCT A
+		WHERE 	A.DELETEYN = 'Y' 
+		AND     A.KPNUM = #{kpnum}	
+</select>
+</mapper>      
